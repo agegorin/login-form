@@ -1,89 +1,82 @@
-.bgHeader {
+.bg-header {
   width: calc(100% - 4rem);
-  margin: 0 auto;
   height: 4rem;
-
   box-sizing: border-box;
   padding: 1rem 2rem;
-
+  border-radius: 0 0 0.6rem 0.6rem;
+  margin: 0 auto;
   background: #eee;
-  border-radius: 0 0 .6rem .6rem;
   box-shadow: #eee 0 0 1rem;
 }
 
-.bgMain {
-  width: calc(100% - 4rem);
-  margin: 1rem auto;
+.bg-main {
   display: flex;
+  width: calc(100% - 4rem);
   justify-content: space-between;
+  margin: 1rem auto;
 }
 
-.bgSection {
+.bg-section {
   width: calc(75% - 2rem);
 }
 
-.bgSide {
+.bg-side {
   width: calc(25% - 2rem);
+  border-radius: 0.6rem;
   background: #eee;
-  border-radius: .6rem;
   box-shadow: #eee 0 0 1rem;
 }
 
-.bgArticle {
-  width: 100%
+.bg-article {
+  width: 100%;
 }
 
-.bgTitle {
+.bg-title {
   display: block;
-  background: #eee;
+  width: 50%;
   height: 1.4rem;
-  margin: 2rem 0 1rem 0;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
+  margin: 2rem 0 1rem;
+  background: #eee;
   box-shadow: #eee 0 0 1rem;
-
-  width: 50%;
 }
 
-.bgLine25 {
+.bg-line25 {
   display: block;
-  background: #eee;
-  height: 1rem;
-  margin: 1rem 0;
-  border-radius: .3rem;
-  box-shadow: #eee 0 0 1rem;
-
   width: 25%;
+  height: 1rem;
+  border-radius: 0.3rem;
+  margin: 1rem 0;
+  background: #eee;
+  box-shadow: #eee 0 0 1rem;
 }
 
-.bgLine50 {
+.bg-line50 {
   display: block;
-  background: #eee;
-  height: 1rem;
-  margin: 1rem 0;
-  border-radius: .3rem;
-  box-shadow: #eee 0 0 1rem;
-
   width: 50%;
+  height: 1rem;
+  border-radius: 0.3rem;
+  margin: 1rem 0;
+  background: #eee;
+  box-shadow: #eee 0 0 1rem;
 }
 
-.bgLine75 {
+.bg-line75 {
   display: block;
-  background: #eee;
-  height: 1rem;
-  margin: 1rem 0;
-  border-radius: .3rem;
-  box-shadow: #eee 0 0 1rem;
-
   width: 75%;
+  height: 1rem;
+  border-radius: 0.3rem;
+  margin: 1rem 0;
+  background: #eee;
+  box-shadow: #eee 0 0 1rem;
 }
 
-.bgLine100 {
+.bg-line100 {
   display: block;
-  background: #eee;
-  height: 1rem;
-  margin: 1rem 0;
-  border-radius: .3rem;
-  box-shadow: #eee 0 0 1rem;
-
   width: auto;
+  height: 1rem;
+  border-radius: 0.3rem;
+  margin: 1rem 0;
+  background: #eee;
+  box-shadow: #eee 0 0 1rem;
 }
