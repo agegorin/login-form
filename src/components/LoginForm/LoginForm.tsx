@@ -4,6 +4,7 @@ import Modal from "../Modal/Modal";
 
 import * as styles from './LoginForm.css';
 import Input from "../Input/Input";
+import SubmitButton from "../SubmitButton/SubmitButton";
 
 const LoginForm = () => {
 
@@ -28,8 +29,8 @@ const LoginForm = () => {
         value={password}
         onChange={(ev) => setPassword(ev.target.value)}
       />
-      <input className={styles.submit} type="submit" value="Log in"/>
-      <a className={styles.forgot} href="#">forgot password?</a>
+      <SubmitButton text={`log in`} />
+      <a className={styles.forgot} href="#">Forgot your password?</a>
     </form>
   </Modal>;
 }
