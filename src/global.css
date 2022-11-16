@@ -1,4 +1,8 @@
+:root {
+  --accent-color: #0fccbc;
+}
+
 body {
-  margin: 0;
   overflow: hidden;
+  margin: 0;
 }

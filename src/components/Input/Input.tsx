@@ -9,17 +9,22 @@ interface InputProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
 
-const Input = ({label, type = 'text', value, onChange}: InputProps) => {
+const Input = React.forwardRef(
+  (
+    {label, type = 'text', value, onChange}: InputProps,
+    ref: React.ForwardedRef<HTMLInputElement>
+  ) => {
 
-return <label className={styles.container}>
-    <input
-      className={styles.input}
-      type={type}
-      value={value}
-      onChange={onChange}
-    />
-    <span className={styles.label}>{label}</span>
-  </label>
-}
+    return <label className={styles.container}>
+      <input
+        className={styles.input}
+        type={type}
+        value={value}
+        onChange={onChange}
+        ref={ref}
+      />
+      <span className={styles.label}>{label}</span>
+    </label>
+  });
 
 export default Input;

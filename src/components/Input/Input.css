@@ -1,7 +1,6 @@
 .container {
   position: relative;
   display: block;
-  margin: 1rem 0;
 }
 
 .label {
@@ -29,6 +28,12 @@
   font-family: Arial, sans-serif;
   font-size: 1.2rem;
   line-height: 2rem;
+  outline: none !important;
+}
+
+.input:focus {
+  border-width: 2px;
+  border-color: var(--accent-color);
 }
 
 .input:focus + .label,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import Modal from "../Modal/Modal";
 
 import * as styles from './LoginForm.css';
@@ -9,15 +9,13 @@ const LoginForm = () => {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const emailRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    emailRef.current?.focus();
-  }, [])
 
   return <Modal>
     <form className={styles.form}>
-      <h2>Please, log in</h2>
+      <nav className={styles.nav}>
+        <span className={`${styles.navItem} ${styles.selected}`}>LOG IN</span>
+        <a href="#" title="sorry, not implemented yet" className={styles.navItem}>SIGN UP</a>
+      </nav>
       <Input
         label="email"
         type="email"
@@ -30,7 +28,8 @@ const LoginForm = () => {
         value={password}
         onChange={(ev) => setPassword(ev.target.value)}
       />
-      <input type="submit" value="Log in"/>
+      <input className={styles.submit} type="submit" value="Log in"/>
+      <a className={styles.forgot} href="#">forgot password?</a>
     </form>
   </Modal>;
 }

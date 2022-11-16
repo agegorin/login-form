@@ -1,7 +1,40 @@
 .form {
+  display: grid;
   width: 22rem;
   box-sizing: border-box;
-  padding: 1.4rem 2rem;
+  padding: 2rem;
   margin-top: 2rem;
   background: #fff;
+  gap: 1rem;
+}
+
+.nav {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.nav-item {
+  color: grey;
+  text-decoration: none;
+}
+
+.nav-item + .nav-item {
+  margin-inline-start: 0.8rem;
+}
+
+.selected {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.submit {
+  height: 3rem;
+  border: 1px solid grey;
+  border-radius: 0.3rem;
+  background: grey;
+}
+
+.forgot {
+  text-align: center;
 }
