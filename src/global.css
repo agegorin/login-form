@@ -1,9 +1,12 @@
 :root {
   --accent-color: #0fccbc;
   --accent-color-dark: #0b8f84;
+  --accent-color-light: #12e8d6;
+  --grey-color: grey;
 }
 
 body {
   overflow: hidden;
   margin: 0;
+  font-family: Arial, sans-serif;
 }

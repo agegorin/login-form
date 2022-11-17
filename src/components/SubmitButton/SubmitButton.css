@@ -9,10 +9,11 @@
   font-size: 1.2rem;
 }
 
-.input:focus {
-  background: var(--accent-color);
+.input:focus,
+.input:hover {
+  background: var(--accent-color-dark);
 }
 
 .input:active {
-  background: var(--accent-color-dark);
+  background: var(--accent-color-light);
 }

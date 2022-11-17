@@ -10,12 +10,11 @@
 
 .nav {
   margin: 0;
-  font-family: Arial, sans-serif;
   text-align: center;
 }
 
 .nav-item {
-  color: grey;
+  color: var(--grey-color);
   text-decoration: none;
 }
 
@@ -29,5 +28,14 @@
 }
 
 .forgot {
+  color: var(--accent-color);
   text-align: center;
+}
+
+.forgot:visited {
+  color: var(--accent-color);
+}
+
+.forgot:hover {
+  color: var(--accent-color-dark);
 }
