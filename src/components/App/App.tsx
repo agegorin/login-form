@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Background from "../Background/Background";
-import LoginForm from "../LoginForm/LoginForm";
+import LoginModal from "../LoginModal/LoginModal";
 
 const App = () => {
   return <>
     <Background/>
-    <LoginForm />
+    <LoginModal />
   </>;
 }
 

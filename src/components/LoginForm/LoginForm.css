@@ -1,41 +1,10 @@
 .form {
   display: grid;
-  width: 22rem;
-  box-sizing: border-box;
-  padding: 2rem;
-  margin-top: 2rem;
   background: #fff;
   gap: 1rem;
 }
 
-.nav {
-  margin: 0;
-  text-align: center;
-}
-
-.nav-item {
-  color: var(--grey-color);
-  text-decoration: none;
-}
-
-.nav-item + .nav-item {
-  margin-inline-start: 0.8rem;
-}
-
-.selected {
-  color: var(--accent-color);
-  font-weight: bold;
-}
-
-.forgot {
-  color: var(--accent-color);
-  text-align: center;
-}
-
-.forgot:visited {
-  color: var(--accent-color);
-}
-
-.forgot:hover {
-  color: var(--accent-color-dark);
+.error {
+  margin: 0.3rem 0 0;
+  color: red;
 }

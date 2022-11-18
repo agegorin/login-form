@@ -1,38 +1,95 @@
 import * as React from 'react';
-import {useState} from "react";
-import Modal from "../Modal/Modal";
+import {useRef, useState} from "react";
 
 import * as styles from './LoginForm.css';
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
 
-const LoginForm = () => {
+interface LoginFormProps {
+  onSubmit: () => void
+}
 
+type Validator = (value: string) => boolean;
+
+const emailValidator: Validator = (value) => value.length !== 0 && value.indexOf('@') !== -1;
+const passwordValidator: Validator = (value) => value.length !== 0;
+
+const LoginForm = ({onSubmit}: LoginFormProps) => {
+
+  const [triedToSubmit, setTriedToSubmit] = useState(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const [showEmailError, setShowEmailError] = useState(false);
+  const [showPassError, setShowPassError] = useState(false);
 
-  return <Modal>
-    <form className={styles.form}>
-      <nav className={styles.nav}>
-        <span className={`${styles.navItem} ${styles.selected}`}>LOG IN</span>
-        <a href="#" title="sorry, not implemented yet" className={styles.navItem}>SIGN UP</a>
-      </nav>
-      <Input
-        label="email"
-        type="email"
-        value={email}
-        onChange={(ev) => setEmail(ev.target.value)}
-      />
-      <Input
-        label="password"
-        type="password"
-        value={password}
-        onChange={(ev) => setPassword(ev.target.value)}
-      />
-      <SubmitButton text={`log in`} />
-      <a className={styles.forgot} href="#">Forgot your password?</a>
-    </form>
-  </Modal>;
+  const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (ev) => {
+    setEmail(ev.target.value)
+
+    if (triedToSubmit) {
+      setShowEmailError(!emailValidator(ev.target.value));
+    }
+  }
+
+  const handlePasswordChange: React.ChangeEventHandler<HTMLInputElement> = (ev) => {
+    setPassword(ev.target.value)
+
+    if (triedToSubmit) {
+      setShowPassError(!passwordValidator(ev.target.value));
+    }
+  }
+
+  const checkForm = () => {
+    setTriedToSubmit(true);
+    const elementsWithErrors = [];
+
+    const isEmailValid = emailValidator(email);
+    setShowEmailError(!isEmailValid);
+    if (!isEmailValid) {
+      elementsWithErrors.push(emailRef);
+    }
+
+    const isPasswordValid = passwordValidator(password);
+    setShowPassError(!isPasswordValid);
+    if (!isPasswordValid) {
+      elementsWithErrors.push(passwordRef);
+    }
+
+    if (elementsWithErrors.length === 0) {
+      onSubmit();
+    } else {
+      elementsWithErrors[0].current?.focus();
+    }
+  }
+
+  return <form
+    className={styles.form}
+    onSubmit={(ev) => {
+      ev.preventDefault();
+      checkForm();
+    }}
+  >
+    <Input
+      label="email"
+      type="email"
+      value={email}
+      isError={showEmailError}
+      errorMessage={'Check your email'}
+      ref={emailRef}
+      onChange={handleEmailChange}
+    />
+    <Input
+      label="password"
+      type="password"
+      value={password}
+      isError={showPassError}
+      errorMessage={'Forgot to enter password?'}
+      ref={passwordRef}
+      onChange={handlePasswordChange}
+    />
+    <SubmitButton text={`log in`}/>
+  </form>;
 }
 
 export default LoginForm;

@@ -1,0 +1,32 @@
+.modal {
+  display: grid;
+  width: 22rem;
+  box-sizing: border-box;
+  padding: 2rem;
+  margin-top: 2rem;
+  background: #fff;
+  gap: 1rem;
+}
+
+.nav {
+  margin: 0;
+  text-align: center;
+}
+
+.forgot {
+  color: var(--accent-color);
+  text-align: center;
+}
+
+.forgot:visited {
+  color: var(--accent-color);
+}
+
+.forgot:hover {
+  color: var(--accent-color-dark);
+}
+
+.under-construction {
+  color: var(--accent-color);
+  text-align: center;
+}

@@ -1,0 +1,19 @@
+.nav-item {
+  color: var(--grey-color);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-item + .nav-item {
+  margin-inline-start: 0.8rem;
+}
+
+.nav-item:not(.selected):hover {
+  color: var(--accent-color-dark);
+}
+
+.selected {
+  color: var(--accent-color);
+  cursor: default;
+  font-weight: bold;
+}
