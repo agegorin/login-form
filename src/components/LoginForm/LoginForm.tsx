@@ -76,7 +76,7 @@ const LoginForm = ({onSubmit}: LoginFormProps) => {
       type="email"
       value={email}
       isError={showEmailError}
-      errorMessage={'Check your email'}
+      errorMessage={'email cannot be empty and should have @ symbol'}
       ref={emailRef}
       onChange={handleEmailChange}
     />
@@ -85,7 +85,7 @@ const LoginForm = ({onSubmit}: LoginFormProps) => {
       type="password"
       value={password}
       isError={showPassError}
-      errorMessage={'Forgot to enter password?'}
+      errorMessage={'password cannot be empty'}
       ref={passwordRef}
       onChange={handlePasswordChange}
     />
