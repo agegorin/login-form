@@ -16,7 +16,7 @@ class AuthStore {
         } else {
           reject('not ok');
         }
-      }, 1000);
+      }, 2000);
     });
   }
 }

@@ -1,13 +1,15 @@
 import * as React from "react";
 
 import * as styles from "./ErrorMessage.css"
+import classnames from "../../utils/classnames";
 
 interface ErrorMessageProps {
-  text?: string;
+  text: string
+  className?: string
 }
 
-const ErrorMessage = ({ text }: ErrorMessageProps) => {
-    return <span className={styles.errorMessage} role="alert">{text}</span>
+const ErrorMessage = ({ text = "", className = "" }: ErrorMessageProps) => {
+    return <span className={classnames(styles.errorMessage, className)} role="alert">{text}</span>
 };
 
 export default ErrorMessage;

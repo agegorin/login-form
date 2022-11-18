@@ -3,3 +3,7 @@
   background: #fff;
   gap: 1rem;
 }
+
+.form-error {
+  text-align: center;
+}

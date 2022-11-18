@@ -7,6 +7,7 @@ import * as styles from './LoginForm.css';
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import Spinner from "../Spinner/Spinner";
 
 interface LoginFormProps {
   onSuccess: () => void
@@ -109,8 +110,9 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
       onChange={handlePasswordChange}
     />
     <SubmitButton text={`log in`} disabled={isWaitingServer} />
-    {isWaitingServer && <p>WAIT</p>}
-    {showServerError && <ErrorMessage text="user with this email and password was not found" />}
+    {isWaitingServer && <Spinner />}
+    {/*<Spinner />*/}
+    {showServerError && <ErrorMessage className={styles.formError} text="user with this email and password was not found" />}
   </form>;
 }
 
