@@ -26,8 +26,9 @@ const Input = React.forwardRef(
         value={value}
         onChange={onChange}
         ref={ref}
+        aria-label={label}
       />
-      <span className={styles.label}>{label}</span>
+      <span className={styles.label} aria-hidden="true">{label}</span>
       {isError && <span className={styles.errorMessage}>{errorMessage}</span>}
     </label>
   });

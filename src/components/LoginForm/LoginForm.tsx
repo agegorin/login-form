@@ -69,6 +69,7 @@ const LoginForm = ({onSubmit}: LoginFormProps) => {
       ev.preventDefault();
       checkForm();
     }}
+    noValidate
   >
     <Input
       label="email"
