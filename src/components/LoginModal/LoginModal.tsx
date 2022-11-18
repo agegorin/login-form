@@ -22,6 +22,14 @@ const LoginModal = () => {
 
   const [curState, setCurState] = useState<LoginStates>(LoginStates.LOGIN);
 
+  const handleLoginFormSubmit = (email: string, password: string) => {
+
+    // place to call any store methods
+    console.log(`try to log in with ${email} / ${password}`)
+
+    setCurState(LoginStates.WAIT);
+  }
+
   return <Modal>
     <div className={styles.modal}>
       <nav className={styles.nav}>
@@ -31,7 +39,7 @@ const LoginModal = () => {
           onClick={() => setCurState(state.type)}
         />)}
       </nav>
-      {curState === LoginStates.LOGIN && <LoginForm onSubmit={() => setCurState(LoginStates.WAIT)} />}
+      {curState === LoginStates.LOGIN && <LoginForm onSubmit={handleLoginFormSubmit} />}
       {curState === LoginStates.SIGNUP && <p className={styles.underConstruction}>sign up form is under construction</p>}
       {curState === LoginStates.FORGOT && <p className={styles.underConstruction}>forgot password form is under construction</p>}
       {curState === LoginStates.WAIT && <p className={styles.underConstruction}>wait is under construction</p>}

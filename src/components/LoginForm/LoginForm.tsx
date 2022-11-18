@@ -6,7 +6,7 @@ import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
 
 interface LoginFormProps {
-  onSubmit: () => void
+  onSubmit: (email: string, password: string) => void
 }
 
 type Validator = (value: string) => boolean;
@@ -57,7 +57,7 @@ const LoginForm = ({onSubmit}: LoginFormProps) => {
     }
 
     if (elementsWithErrors.length === 0) {
-      onSubmit();
+      onSubmit(email, password);
     } else {
       elementsWithErrors[0].current?.focus();
     }
