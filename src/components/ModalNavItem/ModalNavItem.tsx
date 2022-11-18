@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classnames from "../../utils/classnames";
 
 import * as styles from "./ModalNavItem.css"
 
@@ -10,11 +11,9 @@ interface ModalNavItemProps {
 
 const ModalNavItem = ({title, selected, onClick}: ModalNavItemProps) => {
 
-  const styleString = selected ? `${styles.navItem} ${styles.selected}` : styles.navItem;
-
   return <a
     href="#"
-    className={styleString}
+    className={classnames(styles.navItem, {[styles.selected]: selected})}
     onClick={(ev) => {
       ev.preventDefault();
       onClick();

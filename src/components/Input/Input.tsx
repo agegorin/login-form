@@ -1,4 +1,5 @@
 import * as React from "react";
+import classnames from "../../utils/classnames";
 
 import * as styles from "./Input.css"
 
@@ -17,11 +18,9 @@ const Input = React.forwardRef(
     ref: React.ForwardedRef<HTMLInputElement>
   ) => {
 
-    const inputClass = isError ? `${styles.input} ${styles.error}` : styles.input;
-
     return <label className={styles.container}>
       <input
-        className={inputClass}
+        className={classnames(styles.input, {[styles.error]: isError})}
         type={type}
         value={value}
         onChange={onChange}
