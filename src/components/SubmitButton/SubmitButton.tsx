@@ -3,17 +3,19 @@ import * as React from "react";
 import * as styles from "./SubmitButton.css";
 
 interface InputProps {
-  text: string
+  text: string,
+  disabled: boolean
 }
 
 const Input = React.forwardRef(
   (
-    {text}: InputProps
+    {text, disabled = false}: InputProps
   ) => {
 
     return <input
       className={styles.input}
       type="submit"
+      disabled={disabled}
       value={text}
     />
   });

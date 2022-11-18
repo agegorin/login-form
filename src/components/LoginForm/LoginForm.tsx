@@ -1,20 +1,18 @@
 import * as React from 'react';
 import {useRef, useState} from "react";
 
+import authStore from "../../stores/auth";
+import { emailValidator, passwordValidator } from "../../utils/validators";
 import * as styles from './LoginForm.css';
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 interface LoginFormProps {
-  onSubmit: (email: string, password: string) => void
+  onSuccess: () => void
 }
 
-type Validator = (value: string) => boolean;
-
-const emailValidator: Validator = (value) => value.length !== 0 && value.indexOf('@') !== -1;
-const passwordValidator: Validator = (value) => value.length !== 0;
-
-const LoginForm = ({onSubmit}: LoginFormProps) => {
+const LoginForm = ({ onSuccess }: LoginFormProps) => {
 
   const [triedToSubmit, setTriedToSubmit] = useState(false);
   const [email, setEmail] = useState<string>("");
@@ -23,6 +21,8 @@ const LoginForm = ({onSubmit}: LoginFormProps) => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const [showEmailError, setShowEmailError] = useState(false);
   const [showPassError, setShowPassError] = useState(false);
+  const [isWaitingServer, setIsWaitingServer] = useState(false);
+  const [showServerError, setShowServerError] = useState(false);
 
   const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (ev) => {
     setEmail(ev.target.value)
@@ -57,10 +57,27 @@ const LoginForm = ({onSubmit}: LoginFormProps) => {
     }
 
     if (elementsWithErrors.length === 0) {
-      onSubmit(email, password);
+      sendAuth();
     } else {
       elementsWithErrors[0].current?.focus();
     }
+  }
+
+  const sendAuth = () => {
+    authStore
+      .callAuth(email, password)
+      .then(() => {
+        onSuccess();
+        console.log('Login successful. Redirecting user to main page.');
+      })
+      .catch(() => {
+        setShowServerError(true);
+      })
+      .finally(() => {
+        setIsWaitingServer(false);
+      })
+
+    setIsWaitingServer(true);
   }
 
   return <form
@@ -76,6 +93,7 @@ const LoginForm = ({onSubmit}: LoginFormProps) => {
       type="email"
       value={email}
       isError={showEmailError}
+      disabled={isWaitingServer}
       errorMessage={'email cannot be empty and should have @ symbol'}
       ref={emailRef}
       onChange={handleEmailChange}
@@ -85,11 +103,14 @@ const LoginForm = ({onSubmit}: LoginFormProps) => {
       type="password"
       value={password}
       isError={showPassError}
+      disabled={isWaitingServer}
       errorMessage={'password cannot be empty'}
       ref={passwordRef}
       onChange={handlePasswordChange}
     />
-    <SubmitButton text={`log in`}/>
+    <SubmitButton text={`log in`} disabled={isWaitingServer} />
+    {isWaitingServer && <p>WAIT</p>}
+    {showServerError && <ErrorMessage text="user with this email and password was not found" />}
   </form>;
 }
 

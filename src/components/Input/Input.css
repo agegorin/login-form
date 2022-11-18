@@ -55,10 +55,3 @@
 .input.error + .label {
   color: var(--error-color);
 }
-
-.error-message {
-  display: block;
-  margin-top: 0.2rem;
-  color: var(--error-color);
-  font-size: 0.8rem;
-}

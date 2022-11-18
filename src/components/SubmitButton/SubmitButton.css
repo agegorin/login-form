@@ -17,3 +17,7 @@
 .input:active {
   background: var(--accent-color-light);
 }
+
+.input:disabled {
+  background: var(--grey-color);
+}

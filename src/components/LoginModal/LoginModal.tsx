@@ -1,48 +1,42 @@
 import * as React from 'react';
-import Modal from "../Modal/Modal";
-import LoginForm from "../LoginForm/LoginForm";
+import { useState } from "react";
 
 import * as styles from './LoginModal.css';
-import {useState} from "react";
+import Modal from "../Modal/Modal";
 import ModalNavItem from "../ModalNavItem/ModalNavItem";
+import LoginForm from "../LoginForm/LoginForm";
 
 enum LoginStates {
   LOGIN,
   SIGNUP,
   FORGOT,
-  WAIT
+  LOGIN_SUCCESS
 }
-
-const states = [
-  {type: LoginStates.LOGIN,  title: "Log in"},
-  {type: LoginStates.SIGNUP,  title: "Sign up"},
-]
 
 const LoginModal = () => {
 
   const [curState, setCurState] = useState<LoginStates>(LoginStates.LOGIN);
 
-  const handleLoginFormSubmit = (email: string, password: string) => {
-
-    // place to call any store methods
-    console.log(`try to log in with ${email} / ${password}`)
-
-    setCurState(LoginStates.WAIT);
-  }
-
   return <Modal>
     <div className={styles.modal}>
       <nav className={styles.nav}>
-        {states.map(state => <ModalNavItem
-          title={state.title}
-          selected={state.type === curState}
-          onClick={() => setCurState(state.type)}
-        />)}
+        <ModalNavItem
+          title="Log in"
+          selected={LoginStates.LOGIN === curState}
+          onClick={() => setCurState(LoginStates.LOGIN)}
+        />
+        <ModalNavItem
+          title="Sign up"
+          selected={LoginStates.SIGNUP === curState}
+          onClick={() => setCurState(LoginStates.SIGNUP)}
+        />
       </nav>
-      {curState === LoginStates.LOGIN && <LoginForm onSubmit={handleLoginFormSubmit} />}
+      {curState === LoginStates.LOGIN && <LoginForm
+        onSuccess={() => setCurState(LoginStates.LOGIN_SUCCESS)}
+      />}
       {curState === LoginStates.SIGNUP && <p className={styles.underConstruction}>sign up form is under construction</p>}
       {curState === LoginStates.FORGOT && <p className={styles.underConstruction}>forgot password form is under construction</p>}
-      {curState === LoginStates.WAIT && <p className={styles.underConstruction}>wait is under construction</p>}
+      {curState === LoginStates.LOGIN_SUCCESS && <p className={styles.underConstruction}>Login successful. Redirecting user to main page.</p>}
 
       {curState === LoginStates.LOGIN && <a
         className={styles.forgot}
